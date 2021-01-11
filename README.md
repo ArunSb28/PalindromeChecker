@@ -1,5 +1,12 @@
 # PalindromeChecker
 
+Topics:
+1. [Config](https://github.com/ArunSb28/PalindromeChecker#configuraion)
+2. [Running with Docker](https://github.com/ArunSb28/PalindromeChecker#how-to-run-using-docker)
+3. [Testing](https://github.com/ArunSb28/PalindromeChecker#testing-the-code)
+4. [Sample Data](https://github.com/ArunSb28/PalindromeChecker/blob/main/README.md#example)
+
+
 ## Configuraion:
 
 - Spring:
@@ -56,7 +63,7 @@ curl --location --request GET 'http://localhost:8088/palindrome/findAll'
 ]
 ```
 #### **_Note:_** _The palindrome checker is case-insensitive and it will not take number & special charactes into palidrome calculation_
-##### Example:
+##### Examples:
 
 Request:
 ```json
