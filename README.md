@@ -18,7 +18,6 @@ Topics:
  
 Other details can be found under [Properties](/src/main/resources/application.properties)
 
-
 ## How to Run using docker
 1. Clone the project
 2. Build the project
@@ -73,7 +72,7 @@ Request:
 }
 ```
 Response:
-```
+```json
   [    
     {
         "content": "malayalam",
