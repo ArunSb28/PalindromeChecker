@@ -32,9 +32,9 @@ docker-compose up --build  -d
 ```
 *You can install docker compose from [here](https://docs.docker.com/compose/install/#install-compose)*
 
-## Testing the code: 
+## Testing: 
 
-### Below are the steps to perform the testing:
+### Below are the steps:
 
 1. Open [localhost](http://localhost:8088) in browser and login with your name
 2. Test using the below end point to save the request and also see the request data it in the above window
