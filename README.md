@@ -34,8 +34,6 @@ docker-compose up --build  -d
 
 ## Testing: 
 
-### Below are the steps:
-
 1. Open [localhost](http://localhost:8088) in browser and login with your name
 2. Test using the below end point to save the request and also see the request data it in the above window
 ```curl
