@@ -3,7 +3,7 @@
 Topics:
 1. [Config](https://github.com/ArunSb28/PalindromeChecker#configuraion)
 2. [Running with Docker](https://github.com/ArunSb28/PalindromeChecker#how-to-run-using-docker)
-3. [Testing](https://github.com/ArunSb28/PalindromeChecker#testing-the-code)
+3. [Testing](https://github.com/ArunSb28/PalindromeChecker/blob/main/README.md#testing)
 4. [Sample Data](https://github.com/ArunSb28/PalindromeChecker/blob/main/README.md#example)
 
 
