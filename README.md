@@ -58,13 +58,16 @@ curl --location --request GET 'http://localhost:8088/palindrome/findAll'
 #### **_Note:_** _The palindrome checker is case-insensitive and it will not take number & special charactes into palidrome calculation_
 ##### Example:
 
-```json
 Request:
+```json
+
 {
     "content": "malayalam",
     "timestamp": "2021-10-09 00:12:12+0100"
 }
+```
 Response:
+```
   [    
     {
         "content": "malayalam",
@@ -73,14 +76,17 @@ Response:
     }
 ]
 ```
-  - With Special Character
-```json
+__With Special Character__
+
 Request:
+```json
 {
     "content": "malay@alam",
     "timestamp": "2021-10-09 00:12:12+0100"
 }
+```
 Response:
+```json
   [    
     {
         "content": "malay@alam",
