@@ -16,19 +16,18 @@ public class MessagePublisher {
 
 	@Autowired
 	private ChannelTopic topic;
-	
+
 	Logger log = LoggerFactory.getLogger(MessagePublisher.class);
 
 	public String publish(PalindromeInput palindrome) {
-		
+
 		try {
 			template.convertAndSend(topic.getTopic(), palindrome.toString());
-			log.info("Message Published to "+topic.getTopic());
-		}catch(Exception e) {
-			log.error(e.getLocalizedMessage());
+			log.info("Message Published to {}", topic.getTopic());
+		} catch (Exception e) {
+			log.error(e.getMessage());
 		}
-		
-		
+
 		return "Event Published";
 	}
 }

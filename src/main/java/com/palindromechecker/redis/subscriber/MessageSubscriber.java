@@ -1,21 +1,20 @@
 package com.palindromechecker.redis.subscriber;
 
+import java.io.IOException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.connection.Message;
 import org.springframework.data.redis.connection.MessageListener;
-import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
 import com.palindromechecker.dto.PalindromeDto;
-import com.palindromechecker.entity.ChatMessage;
 import com.palindromechecker.entity.PalindromeInput;
-import com.palindromechecker.entity.PalindromeStringCalc;
-import com.palindromechecker.ws.publish.SendMessageToWS;
+import com.palindromechecker.ws.publish.SendMessageToWebSocket;
 
 @Service
 public class MessageSubscriber implements MessageListener {
@@ -26,29 +25,38 @@ public class MessageSubscriber implements MessageListener {
 	PalindromeDto palindromeDto;
 
 	@Autowired
-	SendMessageToWS sendMessageToWs;
+	SendMessageToWebSocket sendMessageToWebSocket;
 
 	Logger log = LoggerFactory.getLogger(MessageSubscriber.class);
 
-	
 	@Value("${websocket.sender}")
-	private String SENDER;
+	private String sender;
 
 	@Value("${websocket.topic}")
-	private String TOPIC;
-	
+	private String topic;
+
 	@Override
 	public void onMessage(Message message, byte[] pattern) {
 
 		try {
+
+			if (message == null) {
+				return;
+			}
+
 			log.info("Message Subscribed");
-			PalindromeInput pi = objectMapper.readValue(message.toString(), PalindromeInput.class);
+
+			PalindromeInput pi = objectMapper.readValue(message.getBody(), PalindromeInput.class);
 			palindromeDto.save(pi);
+
 			log.info("Data Saved to DB");
-			sendMessageToWs.sendMessageToBot(message.toString(), SENDER, TOPIC, new ChatMessage());
+
+			sendMessageToWebSocket.sendMessage(message.toString(), sender, topic);
+
 			log.info("Message Published to webSocket");
-		} catch (Exception e) {
-			log.error(e.getLocalizedMessage());
+
+		} catch (IOException e) {
+			log.error("Not a valid JSON {}", e.getMessage());
 		}
 
 	}

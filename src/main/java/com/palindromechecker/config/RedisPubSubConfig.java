@@ -19,7 +19,7 @@ import com.palindromechecker.redis.subscriber.MessageSubscriber;
 public class RedisPubSubConfig {
 
 	@Value("${redis.hostname}")
-	private String hostname;
+	private String hostName;
 	
 	@Value("${redis.port}")
 	private int port;
@@ -33,7 +33,7 @@ public class RedisPubSubConfig {
 	@Bean
 	public JedisConnectionFactory connFactory() {
 		RedisStandaloneConfiguration config = new RedisStandaloneConfiguration();
-		config.setHostName(hostname);
+		config.setHostName(hostName);
 		config.setPort(port);
 		return new JedisConnectionFactory(config);
 	}
