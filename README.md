@@ -30,6 +30,7 @@ mvn clean install
 ```
 docker-compose up --build  -d
 ```
+*You can install docker compose from [here](https://docs.docker.com/compose/install/#install-compose)*
 
 ## Testing the code: 
 
