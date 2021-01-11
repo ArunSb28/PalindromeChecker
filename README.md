@@ -72,7 +72,7 @@ Request:
 }
 ```
 Response:
-```
+```json
   [    
     {
         "content": "malayalam",
