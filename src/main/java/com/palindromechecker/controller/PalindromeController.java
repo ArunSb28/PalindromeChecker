@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.google.gson.JsonObject;
 import com.palindromechecker.dto.PalindromeDto;
 import com.palindromechecker.entity.PalindromeInput;
 import com.palindromechecker.entity.PalindromeStringCalc;
@@ -24,11 +26,21 @@ public class PalindromeController {
 		
 	@PostMapping("/save")
 	public String save(@RequestBody PalindromeInput palindromeInput) {
+		
+		String isSuccess = "false";
+		String message = "Invalid Request";
+		
+		JsonObject response = new JsonObject();
+		
 		if(palindromeInput.getContent()!=null && palindromeInput.getTimestamp()!=null) {
 			palindromHandler.save(palindromeInput);
-			return "Request Processed";
+		isSuccess = "true";
+		message = "Processed Successfully";
 		}
-		return "Invalid Parameter";
+		response.addProperty("success", isSuccess);
+		response.addProperty("message", message);
+		
+		return response.toString();
 	}
 	
 	@GetMapping("/findAll")

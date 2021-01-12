@@ -50,9 +50,9 @@ public class MessageSubscriber implements MessageListener {
 
 			log.info("Data Saved to DB");
 
-			sendMessageToWebSocket.sendMessage(message.toString(), webSocketSender, webSocketTopic);
+			String webSocketPubResponse = sendMessageToWebSocket.sendMessage(message.toString(), webSocketSender, webSocketTopic);
 
-			log.info("Message Published to webSocket");
+			log.info(webSocketPubResponse);
 
 		} catch (IOException e) {
 			log.error("Not a valid JSON {}", e.getMessage());

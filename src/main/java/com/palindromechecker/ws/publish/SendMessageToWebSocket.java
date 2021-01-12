@@ -15,22 +15,25 @@ public class SendMessageToWebSocket implements SendMessage {
 	Logger log = LoggerFactory.getLogger(SendMessageToWebSocket.class);
 
 	@Autowired
-	private SimpMessagingTemplate simpTemplate;
+	SimpMessagingTemplate simpTemplate;
 	
 	@Autowired
 	ChatMessage chatMessage;
 	
 	@Override
-	public void sendMessage(String content, String sender, String topic) {
+	public String sendMessage(String content, String sender, String topic) {
+		
+		String response = "Publishing to WebSocket Failed";
 		try {
 
 			chatMessage.setContent(content);
 			chatMessage.setSender(sender);
 			chatMessage.setType(MessageType.CHAT);
 			this.simpTemplate.convertAndSend(topic, chatMessage);
+			response = "Published Successfully to WebSocket";
 		} catch (Exception e) {
-
+			response = e.getLocalizedMessage();
 		}
-
+		return response;
 	}
 }

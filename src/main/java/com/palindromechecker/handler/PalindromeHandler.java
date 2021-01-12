@@ -19,8 +19,8 @@ public class PalindromeHandler {
 	@Autowired
 	MessagePublisher messagePublisher;
 
-	public void save(PalindromeInput palindromeInput) {
-		messagePublisher.publish(palindromeInput);
+	public String save(PalindromeInput palindromeInput) {
+		return messagePublisher.publish(palindromeInput);
 	}
 
 	public List<PalindromeStringCalc> getAllProducts() {

@@ -36,6 +36,13 @@ public class PalindromeStringCalc {
 				+ "\", \"longest_palindrome_size\" : \"" + longest_palindrome_size + "\"}";
 	}
 
+	public PalindromeStringCalc(String content, String timeStamp, int longest_palindrome_size) {
+		super();
+		this.content = content;
+		this.timeStamp = timeStamp;
+		this.longest_palindrome_size = longest_palindrome_size;
+	}
+
 	public PalindromeStringCalc() {
 		super();
 	}
