@@ -10,7 +10,6 @@ import org.springframework.data.redis.connection.Message;
 import org.springframework.data.redis.connection.MessageListener;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.palindromechecker.dto.PalindromeDto;
 import com.palindromechecker.entity.PalindromeInput;
@@ -30,10 +29,10 @@ public class MessageSubscriber implements MessageListener {
 	Logger log = LoggerFactory.getLogger(MessageSubscriber.class);
 
 	@Value("${websocket.sender}")
-	private String sender;
+	private String webSocketSender;
 
 	@Value("${websocket.topic}")
-	private String topic;
+	private String webSocketTopic;
 
 	@Override
 	public void onMessage(Message message, byte[] pattern) {
@@ -51,7 +50,7 @@ public class MessageSubscriber implements MessageListener {
 
 			log.info("Data Saved to DB");
 
-			sendMessageToWebSocket.sendMessage(message.toString(), sender, topic);
+			sendMessageToWebSocket.sendMessage(message.toString(), webSocketSender, webSocketTopic);
 
 			log.info("Message Published to webSocket");
 
