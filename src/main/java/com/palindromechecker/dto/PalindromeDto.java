@@ -21,22 +21,25 @@ public class PalindromeDto {
 
 	public static final String HASH_KEY = "Palindrome1";
 
-	@Value("${websocket.sender}")
-	private String SENDER;
-
-	@Value("${websocket.topic}")
-	private String TOPIC;
-
 	Logger log = LoggerFactory.getLogger(PalindromeDto.class);
 
 	@Autowired
 	LongestPalindrome longestPalindrome;
 
-	public PalindromeInput save(PalindromeInput palind) {
+	/**
+	 * @param palind
+	 * @return palind object re
+	 */
+	public String save(PalindromeInput palind) {
 		palindromeTemplate.opsForHash().put(HASH_KEY, palind.getContent(), palind);
-		return palind;
+		return "Persisted to DB";
 	}
+	
+	
 
+	/**
+	 * @return
+	 */
 	public List<PalindromeStringCalc> findall() {
 
 		log.info("Received Get Request");

@@ -1,7 +1,5 @@
 package com.palindromechecker.redis.subscriber;
 
-import java.io.IOException;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,23 +8,15 @@ import org.springframework.data.redis.connection.Message;
 import org.springframework.data.redis.connection.MessageListener;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.palindromechecker.dto.PalindromeDto;
-import com.palindromechecker.entity.PalindromeInput;
 import com.palindromechecker.ws.publish.SendMessageToWebSocket;
 
 @Service
-public class MessageSubscriber implements MessageListener {
-
-	ObjectMapper objectMapper = new ObjectMapper();
-
-	@Autowired
-	PalindromeDto palindromeDto;
+public class MessageSubsciberToWebSocket implements MessageListener {
 
 	@Autowired
 	SendMessageToWebSocket sendMessageToWebSocket;
 
-	Logger log = LoggerFactory.getLogger(MessageSubscriber.class);
+	Logger log = LoggerFactory.getLogger(MessageSubsciberToWebSocket.class);
 
 	@Value("${websocket.sender}")
 	private String webSocketSender;
@@ -34,30 +24,22 @@ public class MessageSubscriber implements MessageListener {
 	@Value("${websocket.topic}")
 	private String webSocketTopic;
 
+	/**
+	 * Subscribes the message from Redis PubSub and sends to WebSocket client that is listening
+	 */
 	@Override
 	public void onMessage(Message message, byte[] pattern) {
-
 		try {
-
 			if (message == null) {
 				return;
 			}
-
-			log.info("Message Subscribed");
-
-			PalindromeInput pi = objectMapper.readValue(message.getBody(), PalindromeInput.class);
-			palindromeDto.save(pi);
-
-			log.info("Data Saved to DB");
-
-			String webSocketPubResponse = sendMessageToWebSocket.sendMessage(message.toString(), webSocketSender, webSocketTopic);
+			String webSocketPubResponse = sendMessageToWebSocket.sendMessage(message.toString(), webSocketSender,
+					webSocketTopic);
 
 			log.info(webSocketPubResponse);
-
-		} catch (IOException e) {
-			log.error("Not a valid JSON {}", e.getMessage());
+		} catch (Exception e) {
+			log.error("Encountered and error{}", e.getMessage());
 		}
-
 	}
 
 }

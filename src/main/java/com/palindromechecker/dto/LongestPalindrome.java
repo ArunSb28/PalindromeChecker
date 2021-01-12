@@ -5,21 +5,25 @@ import org.springframework.stereotype.Component;
 @Component
 public class LongestPalindrome {
 
-	public String longestPalindrome(String palindormeString) {
-		if (palindormeString==null || palindormeString.isEmpty() || palindormeString.trim().length() < 1)
+	/**
+	 * @param palindromeString
+	 * @return
+	 */
+	public String longestPalindrome(String palindromeString) {
+		if (palindromeString==null || palindromeString.isEmpty() || palindromeString.trim().length() < 1)
 			return "";
 		int start = 0;
 		int end = 0;
-		for (int i = 0; i < palindormeString.length(); i++) {
-			int len1 = expandAroundCenter(palindormeString, i, i);
-			int len2 = expandAroundCenter(palindormeString, i, i + 1);
+		for (int i = 0; i < palindromeString.length(); i++) {
+			int len1 = expandAroundCenter(palindromeString, i, i);
+			int len2 = expandAroundCenter(palindromeString, i, i + 1);
 			int len = Math.max(len1, len2);
 			if (len > end - start) {
 				start = i - (len - 1) / 2;
 				end = i + len / 2;
 			}
 		}
-		return hasOnlyDigits(palindormeString.substring(start, end + 1));
+		return hasOnlyDigits(palindromeString.substring(start, end + 1));
 	}
 
 	private int expandAroundCenter(String inputString, int left, int right) {

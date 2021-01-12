@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.google.gson.JsonObject;
-import com.palindromechecker.dto.PalindromeDto;
 import com.palindromechecker.entity.PalindromeInput;
 import com.palindromechecker.entity.PalindromeStringCalc;
 import com.palindromechecker.handler.PalindromeHandler;
@@ -24,6 +22,10 @@ public class PalindromeController {
 	@Autowired
 	private PalindromeHandler palindromHandler;
 		
+	/**
+	 * @param palindromeInput - the input JSON is converted to object
+	 * @return the JSON response
+	 */
 	@PostMapping("/save")
 	public String save(@RequestBody PalindromeInput palindromeInput) {
 		
@@ -43,6 +45,9 @@ public class PalindromeController {
 		return response.toString();
 	}
 	
+	/**
+	 * @return the list of objects
+	 */
 	@GetMapping("/findAll")
 	public List<PalindromeStringCalc> getAllProducts(){
 		return palindromHandler.getAllProducts();

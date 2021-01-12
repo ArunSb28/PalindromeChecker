@@ -8,6 +8,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Input Object class used in /palindrome/save endpoint
+ * 
+ */
 @AllArgsConstructor
 @NoArgsConstructor
 @Data

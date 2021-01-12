@@ -19,13 +19,17 @@ public class MessagePublisher {
 
 	Logger log = LoggerFactory.getLogger(MessagePublisher.class);
 
+	/**
+	 * @param palindrome is published to Redis Pub-Sub
+	 * @return Returns the string based on success/failure of the publishing
+	 */
 	public String publish(PalindromeInput palindrome) {
 
 		try {
 			template.convertAndSend(topic.getTopic(), palindrome.toString());
 			log.info("Message Published to {}", topic.getTopic());
 		} catch (Exception e) {
-			log.error(e.getMessage());
+			log.error("Publishing failed due to {}",e.getMessage());
 		}
 
 		return "Event Published";

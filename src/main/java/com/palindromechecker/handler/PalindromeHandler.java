@@ -19,10 +19,17 @@ public class PalindromeHandler {
 	@Autowired
 	MessagePublisher messagePublisher;
 
+	/**
+	 * @param palindromInput 
+	 * @return
+	 */
 	public String save(PalindromeInput palindromeInput) {
 		return messagePublisher.publish(palindromeInput);
 	}
 
+	/**
+	 * @return Returns the List of Objects
+	 */
 	public List<PalindromeStringCalc> getAllProducts() {
 		return palindromDto.findall();
 	}

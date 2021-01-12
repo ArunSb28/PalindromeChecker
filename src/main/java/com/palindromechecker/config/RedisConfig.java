@@ -12,11 +12,15 @@ import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
 import org.springframework.data.redis.serializer.GenericToStringSerializer;
 
-import com.palindromechecker.redis.subscriber.MessageSubscriber;
+import com.palindromechecker.redis.subscriber.MessageSubsciberToWebSocket;
+import com.palindromechecker.redis.subscriber.MessageSubscriberToDB;
 
 
+/**
+ * Redis DB and Pub-Sub config class
+ */
 @Configuration
-public class RedisPubSubConfig {
+public class RedisConfig {
 
 	@Value("${redis.hostname}")
 	private String hostName;
@@ -28,7 +32,10 @@ public class RedisPubSubConfig {
 	private String redisTopic;
 	
 	@Autowired
-	MessageSubscriber messageSubscriber;
+	MessageSubscriberToDB messageSubscriberToDB;
+	
+	@Autowired
+	MessageSubsciberToWebSocket messageSubscriberToWebSocket;
 	
 	@Bean
 	public JedisConnectionFactory connFactory() {
@@ -54,7 +61,12 @@ public class RedisPubSubConfig {
 
 	@Bean
 	public MessageListenerAdapter msgAdapter() {
-		return new MessageListenerAdapter(messageSubscriber);
+		return new MessageListenerAdapter(messageSubscriberToDB);
+	}
+	
+	@Bean
+	public MessageListenerAdapter msgAdapterForWebSocket() {
+		return new MessageListenerAdapter(messageSubscriberToWebSocket);
 	}
 
 	@Bean
@@ -62,6 +74,7 @@ public class RedisPubSubConfig {
 		RedisMessageListenerContainer container = new RedisMessageListenerContainer();
 		container.setConnectionFactory(connFactory());
 		container.addMessageListener(msgAdapter(), topic());
+		container.addMessageListener(msgAdapterForWebSocket(), topic());
 		return container;
 	}
 	

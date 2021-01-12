@@ -5,6 +5,10 @@ import org.springframework.stereotype.Component;
 
 import lombok.Data;
 
+/**
+ * Used as part of webSocket as payload
+ *
+ */
 @Data
 @Component
 public class ChatMessage {

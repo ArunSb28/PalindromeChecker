@@ -20,6 +20,12 @@ public class SendMessageToWebSocket implements SendMessage {
 	@Autowired
 	ChatMessage chatMessage;
 	
+	/**
+	 *@param content has the data to be shown 
+	 *@param sender is the identity of sender
+	 *@topic webSocket topic which will be listened by client
+	 *@return the response
+	 */
 	@Override
 	public String sendMessage(String content, String sender, String topic) {
 		
