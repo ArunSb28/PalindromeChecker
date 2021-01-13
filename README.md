@@ -1,6 +1,6 @@
 # PalindromeChecker
 
-This application is used to store the strings in Redis DB and while retriving the stored data it is enriched with longest palindromic substring persent in the content string. The input should be only alphabets, so numbers/ special characters will not be taken into consideration. Having the special character in the middle of string will reset the palindrome lenght of that particular content.
+This application is used to store the strings in Redis DB and while retrieving the stored data it is enriched with longest palindromic substring persent in the content string. The input should be only alphabets, so numbers/ special characters will not be taken into consideration. Having the special character in the middle of string will reset the palindrome length of that particular content.
 
 __*Tech Stack:*__ _Java 11, Spring Boot, Redis as DB & Pub-Sub and WebSocket to broadcast the input received._
 
@@ -39,8 +39,9 @@ docker-compose up --build  -d
 
 ## Testing: 
 
-1. Open [localhost](http://localhost:8088) in browser and login with your name
-![Login Page](https://github.com/ArunSb28/PalindromeChecker/blob/main/src/main/resources/static/images/LoginPage_small.JPG)
+1. Open [localhost:8088](http://localhost:8088) in browser and login with your name
+
+ ![Login Page](https://github.com/ArunSb28/PalindromeChecker/blob/main/src/main/resources/static/images/LoginPage_small.JPG)
 
 
 2. Test using the below end point to save the request and also see the request data after login as below:
@@ -56,7 +57,7 @@ curl --location --request POST 'http://localhost:8088/palindrome/save'
 ```
 ![websocketClient](https://github.com/ArunSb28/PalindromeChecker/blob/main/src/main/resources/static/images/webSocket_Client.JPG)
 
-3. To retrive all the saved data with palindrome lenght. __*longest_palindrome_size*__ represents the lenght of palindrom substring :
+3. To retrieve all the saved data with palindrome length use below endpoint. __*longest_palindrome_size*__ represents the length of palindrome substring :
 
 ```curl
 curl --location --request GET 'http://localhost:8088/palindrome/findAll'
