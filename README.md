@@ -1,5 +1,9 @@
 # PalindromeChecker
 
+This application is used to store the strings in Redis DB and while retriving the stored data it is enriched with longest palindromic substring persent in the content string. The input should be only alphabets, so numbers/ special characters will not be taken into consideration. Having the special character in the middle of string will reset the palindrome lenght of that particular content.
+
+__*Tech Stack:*__ _Java 11, Spring Boot, Redis as DB & Pub-Sub and WebSocket to broadcast the input received._
+
 Topics:
 1. [Config](https://github.com/ArunSb28/PalindromeChecker#configuraion)
 2. [Running with Docker](https://github.com/ArunSb28/PalindromeChecker#how-to-run-using-docker)
@@ -11,6 +15,8 @@ Topics:
 
 - Spring:
   - Port : 8088
+  
+  _Note: The port can be modified in the docker-compose file if 8088 is already in-use_
 
 - Redis:
   - Hostname: redis
