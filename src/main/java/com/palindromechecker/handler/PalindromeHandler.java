@@ -23,7 +23,7 @@ public class PalindromeHandler {
 	 * @param palindromInput 
 	 * @return
 	 */
-	public String save(PalindromeInput palindromeInput) {
+	public String publish(PalindromeInput palindromeInput) {
 		return messagePublisher.publish(palindromeInput);
 	}
 

@@ -35,7 +35,7 @@ public class PalindromeController {
 		JsonObject response = new JsonObject();
 		
 		if(palindromeInput.getContent()!=null && palindromeInput.getTimestamp()!=null) {
-			palindromHandler.save(palindromeInput);
+			palindromHandler.publish(palindromeInput);
 		isSuccess = "true";
 		message = "Processed Successfully";
 		}

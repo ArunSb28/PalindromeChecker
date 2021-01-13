@@ -23,7 +23,7 @@ public class LongestPalindrome {
 				end = i + len / 2;
 			}
 		}
-		return hasOnlyDigits(palindromeString.substring(start, end + 1));
+		return digitOrSpecialCharcterCheck(palindromeString.substring(start, end + 1));
 	}
 
 	private int expandAroundCenter(String inputString, int left, int right) {
@@ -39,7 +39,7 @@ public class LongestPalindrome {
 		return rightIndex - leftIndex - 1;
 	}
 
-	private String hasOnlyDigits(String palidrome) {
+	private String digitOrSpecialCharcterCheck(String palidrome) {
 		if ((int) palidrome.charAt(0) < 65 || (int) palidrome.charAt(0) > 90) {
 			return "";
 		}
