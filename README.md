@@ -39,8 +39,8 @@ docker-compose up --build  -d
 
 ## Testing: 
 
-1. Open [localhost](http://localhost:8088) in browser and login with your name
-![Login Page](https://github.com/ArunSb28/PalindromeChecker/blob/main/src/main/resources/static/images/LoginPage_small.JPG)
+1. Open [localhost:8088](http://localhost:8088) in browser and login with your name
+ ![Login Page](https://github.com/ArunSb28/PalindromeChecker/blob/main/src/main/resources/static/images/LoginPage_small.JPG)
 
 
 2. Test using the below end point to save the request and also see the request data after login as below:
