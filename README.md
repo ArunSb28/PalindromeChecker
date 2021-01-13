@@ -56,6 +56,7 @@ curl --location --request POST 'http://localhost:8088/palindrome/save'
 ```
 3. The Data flow will also be broadcasted to the opened window for each step
 4. To retrive all the saved data with palindrome lenght. __*longest_palindrome_size*__ represents the lenght of palindrom substring :
+
 ```curl
 curl --location --request GET 'http://localhost:8088/palindrome/findAll'
 ```
