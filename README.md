@@ -43,7 +43,7 @@ docker-compose up --build  -d
 ![Login Page](https://github.com/ArunSb28/PalindromeChecker/blob/main/src/main/resources/static/images/LoginPage_small.JPG)
 
 
-2. Test using the below end point to save the request and also see the request data it in the above window
+2. Test using the below end point to save the request and also see the request data after login as below:
 ```curl
 curl --location --request POST 'http://localhost:8088/palindrome/save'
 ```
@@ -54,8 +54,9 @@ curl --location --request POST 'http://localhost:8088/palindrome/save'
     "timestamp": "2021-10-09 00:12:12+0100"
 }
 ```
-3. The Data flow will also be broadcasted to the opened window for each step
-4. To retrive all the saved data with palindrome lenght. __*longest_palindrome_size*__ represents the lenght of palindrom substring :
+![websocketClient](https://github.com/ArunSb28/PalindromeChecker/blob/main/src/main/resources/static/images/webSocket_Client.JPG)
+
+3. To retrive all the saved data with palindrome lenght. __*longest_palindrome_size*__ represents the lenght of palindrom substring :
 
 ```curl
 curl --location --request GET 'http://localhost:8088/palindrome/findAll'
