@@ -3,6 +3,7 @@ package com.palindromechecker.handler;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.palindromechecker.dto.PalindromeDto;
@@ -10,7 +11,7 @@ import com.palindromechecker.entity.PalindromeInput;
 import com.palindromechecker.entity.PalindromeStringCalc;
 import com.palindromechecker.redis.publisher.MessagePublisher;
 
-@Service
+@Component
 public class PalindromeHandler {
 
 	@Autowired
@@ -30,7 +31,7 @@ public class PalindromeHandler {
 	/**
 	 * @return Returns the List of Objects
 	 */
-	public List<PalindromeStringCalc> getAllProducts() {
+	public List<PalindromeStringCalc> getAllContent() {
 		return palindromDto.findall();
 	}
 }

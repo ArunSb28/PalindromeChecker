@@ -33,10 +33,11 @@ public class MessageSubsciberToWebSocket implements MessageListener {
 			if (message == null) {
 				return;
 			}
-			String webSocketPubResponse = sendMessageToWebSocket.sendMessage(message.toString(), webSocketSender,
+		sendMessageToWebSocket.sendMessage(message.toString(), webSocketSender,
 					webSocketTopic);
 
-			log.info(webSocketPubResponse);
+		
+		
 		} catch (Exception e) {
 			log.error("Encountered and error{}", e.getMessage());
 		}

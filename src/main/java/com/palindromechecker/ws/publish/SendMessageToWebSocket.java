@@ -37,8 +37,11 @@ public class SendMessageToWebSocket implements SendMessage {
 			chatMessage.setType(MessageType.CHAT);
 			this.simpTemplate.convertAndSend(topic, chatMessage);
 			response = "Published Successfully to WebSocket";
+			
 		} catch (Exception e) {
-			response = e.getLocalizedMessage();
+			
+			log.error("WebSocket Publish Failed due to {}",e.getMessage());
+			response = e.getMessage();
 		}
 		return response;
 	}

@@ -25,13 +25,22 @@ public class MessagePublisher {
 	 */
 	public String publish(PalindromeInput palindrome) {
 
+		String response = "Publish Failed";
 		try {
+			if (palindrome == null ) {
+				log.info("Message Publishing failed as input received was null");
+				
+				return "Input value is null";
+			}
+			
 			template.convertAndSend(topic.getTopic(), palindrome.toString());
+			response = "Event Published";
 			log.info("Message Published to {}", topic.getTopic());
+			
 		} catch (Exception e) {
-			log.error("Publishing failed due to {}",e.getMessage());
+			log.error("Publishing failed due to {}", e.getMessage());
 		}
 
-		return "Event Published";
+		return response;
 	}
 }

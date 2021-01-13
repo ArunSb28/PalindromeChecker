@@ -31,8 +31,12 @@ public class PalindromeDto {
 	 * @return palind object re
 	 */
 	public String save(PalindromeInput palind) {
+		
+		if(palind!=null) {
 		palindromeTemplate.opsForHash().put(HASH_KEY, palind.getContent(), palind);
 		return "Persisted to DB";
+		}
+		return "Received Null value";
 	}
 	
 	

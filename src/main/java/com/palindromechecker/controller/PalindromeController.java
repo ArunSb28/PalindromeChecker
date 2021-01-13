@@ -49,8 +49,8 @@ public class PalindromeController {
 	 * @return the list of objects
 	 */
 	@GetMapping("/findAll")
-	public List<PalindromeStringCalc> getAllProducts(){
-		return palindromHandler.getAllProducts();
+	public List<PalindromeStringCalc> getAllContent(){
+		return palindromHandler.getAllContent();
 	}
 	
 	
