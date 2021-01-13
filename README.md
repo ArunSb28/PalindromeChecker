@@ -1,8 +1,9 @@
 # PalindromeChecker
 
-This application is used to store the strings in Redis DB and while retrieving the stored data it is enriched with longest palindromic substring persent in the content string. The input should be only alphabets, so numbers/ special characters will not be taken into consideration. Having the special character in the middle of string will reset the palindrome length of that particular content.
+This application is used to store the strings in Redis DB and while retrieving the stored data it is enriched with longest palindromic substring persent in the content string. The input should be only alphabets, so numbers/ special characters will not be taken into consideration. Having the special character in the middle of string will reset the palindrome length of that particular content. 
 
-__*Tech Stack:*__ _Java 11, Spring Boot, Redis as DB & Pub-Sub and WebSocket to broadcast the input received._
+  - __*Tech Stack:*__ _Java 11, Spring Boot, Redis as DB & Pub-Sub and WebSocket to broadcast the input received._
+  - *High level design diagram is available [here](https://github.com/ArunSb28/PalindromeChecker/blob/main/src/main/resources/static/images/HighLevel_Design.png)*
 
 Topics:
 1. [Config](https://github.com/ArunSb28/PalindromeChecker#configuraion)
