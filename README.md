@@ -40,6 +40,7 @@ docker-compose up --build  -d
 ## Testing: 
 
 1. Open [localhost:8088](http://localhost:8088) in browser and login with your name
+
  ![Login Page](https://github.com/ArunSb28/PalindromeChecker/blob/main/src/main/resources/static/images/LoginPage_small.JPG)
 
 
@@ -56,7 +57,7 @@ curl --location --request POST 'http://localhost:8088/palindrome/save'
 ```
 ![websocketClient](https://github.com/ArunSb28/PalindromeChecker/blob/main/src/main/resources/static/images/webSocket_Client.JPG)
 
-3. To retrive all the saved data with palindrome lenght. __*longest_palindrome_size*__ represents the lenght of palindrom substring :
+3. To retrieve all the saved data with palindrome lenght. __*longest_palindrome_size*__ represents the lenght of palindrome substring :
 
 ```curl
 curl --location --request GET 'http://localhost:8088/palindrome/findAll'
