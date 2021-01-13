@@ -57,7 +57,7 @@ curl --location --request POST 'http://localhost:8088/palindrome/save'
 ```
 ![websocketClient](https://github.com/ArunSb28/PalindromeChecker/blob/main/src/main/resources/static/images/webSocket_Client.JPG)
 
-3. To retrieve all the saved data with palindrome lenght. __*longest_palindrome_size*__ represents the lenght of palindrome substring :
+3. To retrieve all the saved data with palindrome length. __*longest_palindrome_size*__ represents the lenght of palindrome substring :
 
 ```curl
 curl --location --request GET 'http://localhost:8088/palindrome/findAll'
