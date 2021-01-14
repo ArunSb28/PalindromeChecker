@@ -28,7 +28,7 @@ public class MessagePublisher {
 		String response = "Publish Failed";
 		try {
 			if (palindrome == null ) {
-				log.info("Message Publishing failed as input received was null");
+				log.info("Message Publishing failed as input received is null");
 				
 				return "Input value is null";
 			}

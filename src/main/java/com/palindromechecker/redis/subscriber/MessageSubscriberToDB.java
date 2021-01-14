@@ -31,10 +31,7 @@ public class MessageSubscriberToDB implements MessageListener {
 
 		String result = "Unable to Persist to DB";
 		try {
-			if (message == null) {
-				return;
-			}
-			log.info("Message Subscribed");
+
 			PalindromeInput pi = objectMapper.readValue(message.getBody(), PalindromeInput.class);
 			result = palindromeDto.save(pi);
 			log.info(result);

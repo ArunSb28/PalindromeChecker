@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PalindromeStringCalc {
+public class PalindromeStringOutput {
 
 	private String content;
 	private String timeStamp;

@@ -16,7 +16,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import com.palindromechecker.entity.PalindromeStringCalc;
+import com.palindromechecker.entity.PalindromeStringOutput;
 import com.palindromechecker.handler.PalindromeHandler;
 
 @RunWith(SpringRunner.class)
@@ -78,9 +78,9 @@ class PalindromeControllerTest {
 	@Test
 	void testGetAllProducts() throws Exception {
 
-		PalindromeStringCalc palindromeStringCalc = new PalindromeStringCalc("1112111", "2018-10-09 00:12:12+0100", 0);
-		List<PalindromeStringCalc> palindomeList = new ArrayList<PalindromeStringCalc>();
-		palindomeList.add(palindromeStringCalc);
+		PalindromeStringOutput palindromeStringOutput = new PalindromeStringOutput("1112111", "2018-10-09 00:12:12+0100", 0);
+		List<PalindromeStringOutput> palindomeList = new ArrayList<PalindromeStringOutput>();
+		palindomeList.add(palindromeStringOutput);
 		Mockito.when(palindromeHandler.getAllContent()).thenReturn(palindomeList);
 
 		MvcResult result = mvc

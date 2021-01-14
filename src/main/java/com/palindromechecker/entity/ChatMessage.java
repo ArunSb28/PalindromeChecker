@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import lombok.Data;
 
 /**
- * Used as part of webSocket as payload
+ * Used as part of WebSocket publish as payload
  *
  */
 @Data

@@ -6,12 +6,11 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.palindromechecker.entity.PalindromeInput;
-import com.palindromechecker.entity.PalindromeStringCalc;
+import com.palindromechecker.entity.PalindromeStringOutput;
 
 @Repository
 public class PalindromeDto {
@@ -28,27 +27,25 @@ public class PalindromeDto {
 
 	/**
 	 * @param palind
-	 * @return palind object re
+	 * @return the success or failure message
 	 */
 	public String save(PalindromeInput palind) {
-		
-		if(palind!=null) {
-		palindromeTemplate.opsForHash().put(HASH_KEY, palind.getContent(), palind);
-		return "Persisted to DB";
+
+		if (palind != null) {
+			palindromeTemplate.opsForHash().put(HASH_KEY, palind.getContent(), palind);
+			return "Persisted to DB";
 		}
 		return "Received Null value";
 	}
-	
-	
 
 	/**
-	 * @return
+	 * @return the list of object with palindrome length calculated
 	 */
-	public List<PalindromeStringCalc> findall() {
+	public List<PalindromeStringOutput> findall() {
 
-		log.info("Received Get Request");
+		log.info("Received Get Request to retrive data from DB");
 
-		List<PalindromeStringCalc> palindList = new ArrayList<>();
+		List<PalindromeStringOutput> palindList = new ArrayList<>();
 
 		try {
 			List<Object> dataList = palindromeTemplate.opsForHash().values(HASH_KEY);
@@ -56,16 +53,16 @@ public class PalindromeDto {
 				PalindromeInput palind = (PalindromeInput) prd;
 				String palindromeString = longestPalindrome.longestPalindrome(palind.getContent().toUpperCase());
 
-				PalindromeStringCalc palindCalc = new PalindromeStringCalc();
+				PalindromeStringOutput palindromeStringOutput = new PalindromeStringOutput();
 
-				palindCalc.setContent(palind.getContent());
-				palindCalc.setTimeStamp(palind.getTimestamp());
-				palindCalc.setLongest_palindrome_size(palindromeString.length());
+				palindromeStringOutput.setContent(palind.getContent());
+				palindromeStringOutput.setTimeStamp(palind.getTimestamp());
+				palindromeStringOutput.setLongest_palindrome_size(palindromeString.length());
 
-				palindList.add(palindCalc);
+				palindList.add(palindromeStringOutput);
 			}
 		} catch (Exception e) {
-			log.error(e.getLocalizedMessage());
+			log.error("Encountered error while retriving {}", e.getMessage());
 		}
 
 		log.info("Get Request Completed");

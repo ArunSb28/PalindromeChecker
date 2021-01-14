@@ -25,21 +25,18 @@ public class MessageSubsciberToWebSocket implements MessageListener {
 	private String webSocketTopic;
 
 	/**
-	 * Subscribes the message from Redis PubSub and sends to WebSocket client that is listening
+	 * Subscribes the message from Redis PubSub and sends to WebSocket client that
+	 * are listening
 	 */
 	@Override
 	public void onMessage(Message message, byte[] pattern) {
 		try {
-			if (message == null) {
-				return;
-			}
-		sendMessageToWebSocket.sendMessage(message.toString(), webSocketSender,
-					webSocketTopic);
 
-		
-		
+			sendMessageToWebSocket.sendMessage(message.toString(), webSocketSender, webSocketTopic);
+			log.info("Published successfully to WebSocket on topic {}", webSocketTopic);
+
 		} catch (Exception e) {
-			log.error("Encountered and error{}", e.getMessage());
+			log.error("Encountered an error while publishing to WebSocket due to {}", e.getMessage());
 		}
 	}
 

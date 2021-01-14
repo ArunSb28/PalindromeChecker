@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.JsonObject;
 import com.palindromechecker.entity.PalindromeInput;
-import com.palindromechecker.entity.PalindromeStringCalc;
+import com.palindromechecker.entity.PalindromeStringOutput;
 import com.palindromechecker.handler.PalindromeHandler;
 
 
@@ -49,7 +49,7 @@ public class PalindromeController {
 	 * @return the list of objects
 	 */
 	@GetMapping("/findAll")
-	public List<PalindromeStringCalc> getAllContent(){
+	public List<PalindromeStringOutput> getAllContent(){
 		return palindromHandler.getAllContent();
 	}
 	

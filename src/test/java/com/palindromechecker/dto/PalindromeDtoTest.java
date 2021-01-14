@@ -19,7 +19,7 @@ import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 
 import com.palindromechecker.entity.PalindromeInput;
-import com.palindromechecker.entity.PalindromeStringCalc;
+import com.palindromechecker.entity.PalindromeStringOutput;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PalindromeDtoTest {
@@ -75,7 +75,7 @@ public class PalindromeDtoTest {
 		List<Object> dataList = new ArrayList<Object>();
 		dataList.add(new PalindromeInput());
 
-		List<PalindromeStringCalc> palindList = new ArrayList<PalindromeStringCalc>();
+		List<PalindromeStringOutput> palindList = new ArrayList<PalindromeStringOutput>();
 
 		Mockito.when(palindromeTemplate.opsForHash()).thenReturn(hashOperations);
 		Mockito.when(hashOperations.values(HASH_KEY)).thenReturn(dataList);
