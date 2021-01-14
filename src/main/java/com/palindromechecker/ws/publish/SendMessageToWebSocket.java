@@ -3,6 +3,7 @@ package com.palindromechecker.ws.publish;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.MessagingException;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Component;
 
@@ -38,10 +39,9 @@ public class SendMessageToWebSocket implements SendMessage {
 			this.simpTemplate.convertAndSend(topic, chatMessage);
 			response = "Published Successfully to WebSocket";
 			
-		} catch (Exception e) {
+		} catch (MessagingException e) {
 			
 			log.error("WebSocket Publish Failed due to {}",e.getMessage());
-			response = e.getMessage();
 		}
 		return response;
 	}
