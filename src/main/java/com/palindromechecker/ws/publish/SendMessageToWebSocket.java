@@ -21,10 +21,10 @@ public class SendMessageToWebSocket implements SendMessage {
 	ChatMessage chatMessage;
 	
 	/**
-	 *@param content has the data to be shown 
-	 *@param sender is the identity of sender
-	 *@topic webSocket topic which will be listened by client
-	 *@return the response
+	 *@content has the data to be shown 
+	 *@sender sender is the identity of sender
+	 *@topic webSocket topic to which the chatMessage is published
+	 *@return the response based on publishing
 	 */
 	@Override
 	public String sendMessage(String content, String sender, String topic) {

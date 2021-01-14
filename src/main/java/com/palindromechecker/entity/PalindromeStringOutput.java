@@ -5,7 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Input Object class used in /palindrome/findAll endpoint
+ * Output Object class used in returning the values as part of
+ * /palindrome/findAll endpoint
  *
  */
 @Data

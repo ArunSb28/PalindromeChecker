@@ -15,28 +15,28 @@ import org.springframework.data.redis.serializer.GenericToStringSerializer;
 import com.palindromechecker.redis.subscriber.MessageSubsciberToWebSocket;
 import com.palindromechecker.redis.subscriber.MessageSubscriberToDB;
 
-
 /**
- * Redis DB and Pub-Sub config class
+ * Redis DB and Pub-Sub config class, here two subscribers are configured for a
+ * single topic
  */
 @Configuration
 public class RedisConfig {
 
 	@Value("${redis.hostname}")
 	private String hostName;
-	
+
 	@Value("${redis.port}")
 	private int port;
-	
+
 	@Value("${redis.topic}")
 	private String redisTopic;
-	
+
 	@Autowired
 	MessageSubscriberToDB messageSubscriberToDB;
-	
+
 	@Autowired
 	MessageSubsciberToWebSocket messageSubscriberToWebSocket;
-	
+
 	@Bean
 	public JedisConnectionFactory connFactory() {
 		RedisStandaloneConfiguration config = new RedisStandaloneConfiguration();
@@ -63,7 +63,7 @@ public class RedisConfig {
 	public MessageListenerAdapter msgAdapter() {
 		return new MessageListenerAdapter(messageSubscriberToDB);
 	}
-	
+
 	@Bean
 	public MessageListenerAdapter msgAdapterForWebSocket() {
 		return new MessageListenerAdapter(messageSubscriberToWebSocket);
@@ -77,5 +77,5 @@ public class RedisConfig {
 		container.addMessageListener(msgAdapterForWebSocket(), topic());
 		return container;
 	}
-	
+
 }

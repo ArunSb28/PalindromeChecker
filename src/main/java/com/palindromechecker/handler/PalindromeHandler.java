@@ -15,20 +15,20 @@ public class PalindromeHandler {
 
 	@Autowired
 	private PalindromeDto palindromDto;
-	
+
 	@Autowired
 	MessagePublisher messagePublisher;
 
 	/**
-	 * @param palindromInput 
-	 * @return
+	 * @param palindromInput received as input to be published
+	 * @return the response from MessagePublisher Class
 	 */
 	public String publish(PalindromeInput palindromeInput) {
 		return messagePublisher.publish(palindromeInput);
 	}
 
 	/**
-	 * @return Returns the List of Objects
+	 * @return Returns the List of Objects retrieved from DB with enriched data
 	 */
 	public List<PalindromeStringOutput> getAllContent() {
 		return palindromDto.findall();

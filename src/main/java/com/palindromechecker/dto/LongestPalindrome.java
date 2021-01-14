@@ -6,11 +6,12 @@ import org.springframework.stereotype.Component;
 public class LongestPalindrome {
 
 	/**
-	 * @param palindromeString
-	 * @return
+	 * @param palindromeString in which longest palindrome is to be identified. Numbers and
+	 *        special characters will reset palindrome substring
+	 * @return the longest palindrome substirng
 	 */
 	public String longestPalindrome(String palindromeString) {
-		if (palindromeString==null || palindromeString.isEmpty() || palindromeString.trim().length() < 1)
+		if (palindromeString == null || palindromeString.isEmpty() || palindromeString.trim().length() < 1)
 			return "";
 		int start = 0;
 		int end = 0;

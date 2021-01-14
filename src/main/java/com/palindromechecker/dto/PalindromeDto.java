@@ -26,20 +26,21 @@ public class PalindromeDto {
 	LongestPalindrome longestPalindrome;
 
 	/**
-	 * @param palind
+	 * @param Object of PalindromeInput which has to be persisted to DB
 	 * @return the success or failure message
 	 */
-	public String save(PalindromeInput palind) {
+	public String save(PalindromeInput palindromeInput) {
 
-		if (palind != null) {
-			palindromeTemplate.opsForHash().put(HASH_KEY, palind.getContent(), palind);
+		if (palindromeInput != null) {
+			palindromeTemplate.opsForHash().put(HASH_KEY, palindromeInput.getContent(), palindromeInput);
 			return "Persisted to DB";
 		}
 		return "Received Null value";
 	}
 
 	/**
-	 * @return the list of object with palindrome length calculated
+	 * @return the list of PalindromeStringOutput object with palindrome length
+	 *         calculated
 	 */
 	public List<PalindromeStringOutput> findall() {
 

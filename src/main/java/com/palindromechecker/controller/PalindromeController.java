@@ -46,7 +46,7 @@ public class PalindromeController {
 	}
 	
 	/**
-	 * @return the list of objects
+	 * @return the list of objects with enriched data
 	 */
 	@GetMapping("/findAll")
 	public List<PalindromeStringOutput> getAllContent(){
