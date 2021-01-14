@@ -19,7 +19,7 @@ This application is used to store the strings in Redis DB and while retrieving t
  
 Other details can be found under [Properties](/src/main/resources/application.properties)
 
-## How to Run using docker
+## Running on docker
 1. Clone the project
 2. Build the project
 
@@ -31,6 +31,38 @@ mvn clean install
 docker-compose up --build  -d
 ```
 *You can install docker compose from [here](https://docs.docker.com/compose/install/#install-compose)*
+
+
+## Running Locally:
+
+If you want to run the Spring appliation in your local and Redis on Docker follow the below steps:
+  
+  - Clone the project 
+  - Import to your favouite IDE
+  - Setup Redis docker with below command:
+  ```
+  docker run -d -p 6379:6379 --name redis1 redis
+  ```
+  This will start the redis image on port 6379
+  
+  - Alternatively you can run Redis on your local machine, *the Springboot app configuration remains same for both*.
+  
+  - Modify the following property in [application.properties]() file
+  ```
+  From:
+  redis.hostname = redis
+  redis.port = 6379
+  
+  To:
+  redis.hostname = localhost
+  redis.port = <6379 or Port of your choice as configured while Redis setup>
+  ```
+  - Run the Springboot application from any of your IDE after executing the below command
+  ```
+  mvn clean install
+  ```
+  - You can start testing!
+
 
 ## Testing: 
 
@@ -109,27 +141,4 @@ Response:
 ```
 Here *ala* is the palindrome string. Same goes for number too.
 
-## *AddOns:*
 
-If you want to run the Spring appliation in your local and Redis on Docker follow the below steps:
-  
-  - Clone the project 
-  - Import to your favouite IDE
-  - Setup Redis docker with below command:
-  ```
-  docker run -d -p 6379:6379 --name redis1 redis
-  ```
-  This will start the redis image on port 6379
-  
-  - Modify the following property in [application.properties]() file
-  ```
-  From:
-  redis.hostname = redis
-  To:
-  redis.hostname = localhost
-  ```
-  - Run the Springboot application from any of your favourite IDE after executing the below command
-  ```
-  mvn clean install
-  ```
-  - Make any necessary changes to code and test it!
