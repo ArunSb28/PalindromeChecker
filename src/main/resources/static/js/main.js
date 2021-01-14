@@ -35,13 +35,6 @@ function connect(event) {
 function onConnected() {
     // Subscribe to the Public Topic
     stompClient.subscribe('/topic/publicPalindrome', onMessageReceived);
-
-    // Tell your username to the server
-    stompClient.send("/app/chat.register",
-        {},
-        JSON.stringify({sender: username, type: 'JOIN'})
-    )
-
     connectingElement.classList.add('hidden');
 }
 
@@ -52,7 +45,7 @@ function onError(error) {
 }
 
 
-function send(event) {
+/*function send(event) {
     var messageContent = messageInput.value.trim();
 
     if(messageContent && stompClient) {
@@ -66,7 +59,7 @@ function send(event) {
         messageInput.value = '';
     }
     event.preventDefault();
-}
+}*/
 
 
 function onMessageReceived(payload) {
