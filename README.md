@@ -5,12 +5,6 @@ This application is used to store the strings in Redis DB and while retrieving t
   - __*Tech Stack:*__ _Java 11, Spring Boot, Redis as DB & Pub-Sub and WebSocket to broadcast the input received._
   - *High level design diagram is available [here](https://github.com/ArunSb28/PalindromeChecker/blob/main/src/main/resources/static/images/HighLevel_Design.png)*
 
-Topics:
-1. [Config](https://github.com/ArunSb28/PalindromeChecker#configuraion)
-2. [Running with Docker](https://github.com/ArunSb28/PalindromeChecker#how-to-run-using-docker)
-3. [Testing](https://github.com/ArunSb28/PalindromeChecker/blob/main/README.md#testing)
-4. [Sample Data](https://github.com/ArunSb28/PalindromeChecker/blob/main/README.md#examples)
-
 
 ## Configuraion:
 
@@ -114,3 +108,28 @@ Response:
 ]
 ```
 Here *ala* is the palindrome string. Same goes for number too.
+
+## *AddOns:*
+
+If you want to run the Spring appliation in your local and Redis on Docker follow the below steps:
+  
+  - Clone the project 
+  - Import to your favouite IDE
+  - Setup Redis docker with below command:
+  ```
+  docker run -d -p 6379:6379 --name redis1 redis
+  ```
+  This will start the redis image on port 6379
+  
+  - Modify the following property in [application.properties]() file
+  ```
+  From:
+  redis.hostname = redis
+  To:
+  redis.hostname = localhost
+  ```
+  - Run the Springboot application from any of your favourite IDE after executing the below command
+  ```
+  mvn clean install
+  ```
+  - Make any necessary changes to code and test it!
