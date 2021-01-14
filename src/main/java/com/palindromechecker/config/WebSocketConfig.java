@@ -22,19 +22,18 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 	@Value("${websocket.broker}")
 	private String simpleBroker;
 	
-	@Value("${websocket.prefix}")
-	private String websockPrefix;
 	
 	@Override
 	public void registerStompEndpoints(StompEndpointRegistry registry) {
+		
 		registry.addEndpoint(registryEndPoint).withSockJS();
+		
 	}
 	
 	@Override
 	public void configureMessageBroker(MessageBrokerRegistry config) {
 		
 		config.enableSimpleBroker(simpleBroker);
-		config.setApplicationDestinationPrefixes(websockPrefix);
 		
 	}
 	

@@ -23,7 +23,7 @@ public class PalindromeController {
 	private PalindromeHandler palindromHandler;
 		
 	/**
-	 * @param palindromeInput - the input JSON is converted to object
+	 * @param  the input JSON is converted to object of class PalindromeInput
 	 * @return the JSON response
 	 */
 	@PostMapping("/save")

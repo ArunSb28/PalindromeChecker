@@ -18,7 +18,7 @@ public class PalindromeDto {
 	@Autowired
 	private RedisTemplate<String, Object> palindromeTemplate;
 
-	public static final String HASH_KEY = "Palindrome1";
+	public static final String HASH_KEY = "PalindromeData";
 
 	Logger log = LoggerFactory.getLogger(PalindromeDto.class);
 

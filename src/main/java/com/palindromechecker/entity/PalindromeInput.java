@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@RedisHash("Palindrome1")
+@RedisHash("PalindromeData")
 public class PalindromeInput implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String content;
