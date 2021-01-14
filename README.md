@@ -47,7 +47,7 @@ If you want to run the Spring appliation in your local and Redis on Docker follo
   
   - Alternatively you can run Redis on your local machine, *the Springboot app configuration remains same for both*.
   
-  - Modify the following property in [application.properties]() file
+  - Modify the following property in _application.properties_ :
   ```
   From:
   redis.hostname = redis
@@ -58,11 +58,21 @@ If you want to run the Spring appliation in your local and Redis on Docker follo
   redis.port = <6379 or Port of your choice as configured while Redis setup>
   ```
   - Run the Springboot application from any of your IDE after executing the below command
+    - To change the Springboot applicatoin port, modify the following property in _application.properties_:
+  ```
+  From:
+  server.port = 8088
+  
+  To:
+  server.port = <Port of your choice>
+  ```
+  - And
   ```
   mvn clean install
   ```
-  - You can start testing!
+  _You can start testing!_
 
+*Note: Make sure to update the docker-compose.yml file accordingly with modified port*
 
 ## Testing: 
 
