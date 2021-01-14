@@ -3,6 +3,7 @@ package com.palindromechecker.ws.publish;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.doNothing;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -13,27 +14,23 @@ import com.palindromechecker.entity.ChatMessage;
 import com.palindromechecker.entity.ChatMessage.MessageType;
 
 @RunWith(MockitoJUnitRunner.class)
-class SendMessageToWebSocketTest {
+public class SendMessageToWebSocketTest {
 
 	@Mock
 	SimpMessagingTemplate simpTemplate;
 
-//	@Mock
-//	ChatMessage chatMessage;
-
 	@Mock
-	MessageType messageType;
+	ChatMessage chatMessage;
 
 	@InjectMocks
 	SendMessageToWebSocket sendMessagetoWebSocket;
 
-	void testSendMessage() {
-		String response = "Processed Successfully";
-//		chatMessage.setContent("Hello");
-//		chatMessage.setSender("Arun");
-//		chatMessage.setType(MessageType.CHAT);
-
-		ChatMessage chatMessage = new ChatMessage();
+	@Test
+	public void testSendMessage() {
+		String response = "Published Successfully to WebSocket";
+		chatMessage.setContent("Hello");
+		chatMessage.setSender("Arun");
+		chatMessage.setType(MessageType.CHAT);
 
 		doNothing().when(simpTemplate).convertAndSend("/topic/publicPalindrome", chatMessage);
 
@@ -41,5 +38,6 @@ class SendMessageToWebSocketTest {
 		assertEquals(expected, response);
 
 	}
+	
 
 }
