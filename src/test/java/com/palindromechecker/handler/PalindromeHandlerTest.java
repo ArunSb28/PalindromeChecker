@@ -37,10 +37,10 @@ public class PalindromeHandlerTest {
 		palindromeInput.setContent("arun");
 		palindromeInput.setTimestamp("2021-10-09 00:12:12+0100");
 
-		Mockito.when(messagePublisher.publish(palindromeInput)).thenReturn("Published Successfully");
+		Mockito.when(messagePublisher.publish(palindromeInput)).thenReturn("Processed Successfully");
 
 		String result = palindromeHandler.publish(palindromeInput);
-		String expected = "Published Successfully";
+		String expected = "Processed Successfully";
 
 		assertEquals(expected, result);
 
@@ -49,10 +49,10 @@ public class PalindromeHandlerTest {
 	@Test
 	public void testPublishWithNull() {
 
-		Mockito.when(messagePublisher.publish(null)).thenReturn("Publishing failed due to");
+		Mockito.when(messagePublisher.publish(null)).thenReturn("Invalid input");
 
 		String result = palindromeHandler.publish(null);
-		String expected = "Publishing failed due to";
+		String expected = "Invalid input";
 
 		assertEquals(expected, result);
 

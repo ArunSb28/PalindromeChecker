@@ -25,20 +25,21 @@ public class MessagePublisher {
 	 */
 	public String publish(PalindromeInput palindrome) {
 
-		String response = "Publish Failed";
+		String response = "Processed Successfully";
 		try {
 			if (palindrome == null ) {
 				log.info("Message Publishing failed as input received is null");
 				
-				return "Input value is null";
+				return "Invalid input";
 			}
 			
 			template.convertAndSend(topic.getTopic(), palindrome.toString());
-			response = "Event Published";
+			
 			log.info("Message Published to {}", topic.getTopic());
 			
 		} catch (Exception e) {
 			log.error("Publishing failed due to {}", e.getMessage());
+			response = "Processing failed";
 		}
 
 		return response;

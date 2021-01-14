@@ -37,7 +37,9 @@ class PalindromeControllerTest {
 		MvcResult result = mvc.perform(MockMvcRequestBuilders.post("/palindrome/save").content(requestContent)
 				.contentType(MediaType.APPLICATION_JSON)).andReturn();
 		String expected = "{\"success\":\"true\",\"message\":\"Processed Successfully\"}";
-		JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), false);
+		String actual = result.getResponse().getContentAsString();
+		System.out.println(actual);
+		JSONAssert.assertEquals(expected,actual, false);
 
 	}
 

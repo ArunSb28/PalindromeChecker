@@ -1,9 +1,7 @@
 package com.palindromechecker.redis.publisher;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.doNothing;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -30,7 +28,7 @@ public class MessagePublisherTest {
 	public void testPublishWithInput() {
 
 		String actual = messagePublisher.publish(new PalindromeInput());
-		String expected = "Event Published";
+		String expected = "Processed Successfully";
 		assertEquals(expected, actual);
 
 	}
@@ -39,7 +37,7 @@ public class MessagePublisherTest {
 	public void testPublishWithNullValue() {
 
 		String actual = messagePublisher.publish(null);
-		String expected = "Input value is null";
+		String expected = "Invalid input";
 		assertEquals(expected, actual);
 
 	}
