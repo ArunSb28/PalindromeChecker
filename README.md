@@ -65,10 +65,16 @@ If you want to run the Spring appliation in your local and Redis on Docker follo
   To:
   server.port = <Port of your choice>
   ```
-  - Run the Springboot application from IDE after executing the below command
+  - Execute the below command
+  
   ```
   mvn clean install
   ```
+    
+  - If you get this error *'perhaps you are running on a jre rather than a jdk maven'*, then import JDK instead by following [this](https://stackoverflow.com/questions/13635563/setting-jdk-in-eclipse)
+  
+  - Run the Springboot application
+  
   _You can start testing!_
 
 *Note: Make sure to update the docker-compose.yml file accordingly with modified port*
