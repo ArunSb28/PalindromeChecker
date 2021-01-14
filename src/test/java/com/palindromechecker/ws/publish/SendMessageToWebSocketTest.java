@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.messaging.MessagingException;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
@@ -41,17 +40,17 @@ public class SendMessageToWebSocketTest {
 		assertEquals(expected, response);
 
 	}
-	
 
 	@Test
 	public void testSendMessageWithNull() {
 		String response = "Publishing to WebSocket Failed";
 
-		doThrow(new MessagingException("Exception")).when(simpTemplate).convertAndSend("/topic/publicPalindrome", chatMessage);
+		doThrow(new MessagingException("Exception")).when(simpTemplate).convertAndSend("/topic/publicPalindrome",
+				chatMessage);
 
 		String expected = sendMessagetoWebSocket.sendMessage("Hello", "Arun", "/topic/publicPalindrome");
 		assertEquals(expected, response);
 
 	}
-	
+
 }
