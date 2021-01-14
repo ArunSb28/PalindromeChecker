@@ -1,6 +1,6 @@
 # PalindromeChecker
 
-This application is used to store the strings in Redis DB and while retrieving the stored data it is enriched with longest palindromic substring persent in the content string. The input should be only alphabets, so numbers/ special characters will not be taken into consideration. Having the special character in the middle of string will reset the palindrome length of that particular content. 
+This application is used to store the strings in Redis DB and while retrieving the stored data it is enriched with longest palindromic substring persent in the content. The input should be only alphabets, so numbers/ special characters will not be taken into consideration for palindrome calculation. Having the special character/number in the middle of string will reset the palindrome length of that particular string. 
 
   - __*Tech Stack:*__ _Java 11, Spring Boot, Redis as DB & Pub-Sub and WebSocket to broadcast the input received._
   - *High level design diagram is available [here](https://github.com/ArunSb28/PalindromeChecker/blob/main/src/main/resources/static/images/HighLevel_Design.png)*
@@ -57,8 +57,7 @@ If you want to run the Spring appliation in your local and Redis on Docker follo
   redis.hostname = localhost
   redis.port = <6379 or Port of your choice as configured while Redis setup>
   ```
-  - Run the Springboot application from any of your IDE after executing the below command
-    - To change the Springboot applicatoin port, modify the following property in _application.properties_:
+  - To change the Springboot applicatoin port :
   ```
   From:
   server.port = 8088
@@ -66,7 +65,7 @@ If you want to run the Spring appliation in your local and Redis on Docker follo
   To:
   server.port = <Port of your choice>
   ```
-  - And
+  - Run the Springboot application from IDE after executing the below command
   ```
   mvn clean install
   ```
